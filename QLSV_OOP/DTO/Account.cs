@@ -19,10 +19,10 @@ namespace QLSV_OOP.DTO
         }
         public Account(DataRow row)
         {
-            this.UserName = row["Username"].ToString();
+            this.UserName = row["TDN"].ToString();
             this.UserID = row["MaDD"].ToString();
             this.RoleID = row["MaQuyen"].ToString();
-            this.Password = row["Password"].ToString();
+            this.Password = row["MK"].ToString();
         }
         private string roleID;
 

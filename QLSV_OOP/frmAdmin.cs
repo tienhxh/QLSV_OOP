@@ -41,6 +41,7 @@
             private void ChangePasswordToolStripMenuItem_Click(object sender, EventArgs e)
             {
                 frmChangePassword changePass = new frmChangePassword(account);
+                changePass.ShowDialog();
             }
         }
     }

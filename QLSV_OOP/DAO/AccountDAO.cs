@@ -31,7 +31,7 @@ namespace QLSV_OOP.DAO
         
         public bool Login(string username, string password, string roleid)
         {
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT COUNT(*) FROM tai_khoan WHERE Username ='" + username + "' AND Password='" + password + "' AND MaQuyen= '"+ roleid +"'", con);
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT COUNT(*) FROM Tai_khoan WHERE TDN ='" + username + "' AND MK='" + password + "' AND MaQuyen= '"+ roleid +"'", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows[0][0].ToString() == "1")
@@ -45,7 +45,7 @@ namespace QLSV_OOP.DAO
 
         public Account GetAccountByUserName(string userName)
         {
-            SqlDataAdapter sa = new SqlDataAdapter("SELECT * FROM tai_khoan WHERE Username = '" + userName + "'", con);
+            SqlDataAdapter sa = new SqlDataAdapter("SELECT * FROM Tai_khoan WHERE TDN = '" + userName + "'", con);
             DataTable dt = new DataTable();
             sa.Fill(dt);
             foreach (DataRow item in dt.Rows)
@@ -61,7 +61,7 @@ namespace QLSV_OOP.DAO
             {
                 connection.Open();
 
-                string query = "UPDATE Account SET Password = @NewPassword WHERE UserName = @UserName AND Password = @OldPassword";
+                string query = "UPDATE Tai_khoan SET MK = @NewPassword WHERE TDN = @UserName AND MK = @OldPassword";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@UserName", username);
                 command.Parameters.AddWithValue("@OldPassword", oldPassword); // Mật khẩu cũ
